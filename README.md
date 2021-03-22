@@ -35,9 +35,11 @@ docker container run -d -p 3306:3306  \
 ```
 4. Run in browser
 * http://localhost:8084/dakgalbi
+* Try online version: http://recsys.cau.ac.kr:8084
 
 ## Contact ##
-vuongnguyen@cau.ac.kr
-Try online version: http://recsys.cau.ac.kr:8084
+In case of queries, please email: vuongnguyen@cau.ac.kr
+
+
 
 
