@@ -15,7 +15,7 @@ Spring Framework
 Maven
 ```
 
-###How to run the system with Apache Tomcat?
+### How to run the system with Apache Tomcat?
 1. Start web sever
 ```
 $mvnw tomcat8:run
