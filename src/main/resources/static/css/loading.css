@@ -1,0 +1,19 @@
+.overlay-loading {
+    position: fixed !important;
+    background-color: #000;
+    display: block;
+    height: 100%;
+    left: 0;
+    right: 0;
+    opacity: .7;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.screen-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}

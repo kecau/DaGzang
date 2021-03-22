@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--import css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/adminlte.min.css}"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/css/adminlte.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed background_content_custom">
+
+<div class="wrapper background_content_custom">
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper background_content_custom" style="padding: 110px 10px 110px 10px;">
+        <section class="content">
+            <div class="row table-wrapper-scroll-y my-custom-scrollbar" style="background-color: #dbdbdb;">
+            </div>
+        </section>
+    </div>
+
+    <!-- /.content-wrapper -->
+    <div th:replace="fragments/footer :: fixed-footer"></div>
+</div>
+
+</body>
+
+</html>

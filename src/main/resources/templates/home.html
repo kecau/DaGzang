@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head :: css"></div>
+</head>
+<body>
+<div class="page">
+    <div th:replace="fragments/body :: header"></div>
+    <!-- header menu -->
+    <div th:replace="fragments/body :: header-menu"></div>
+
+    <!-- main page-->
+    <div class="page-main">
+        <div class="my-3 my-md-5">
+            <div class="container">
+                <div class="row">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div th:replace="fragments/body :: footer"></div>
+</div>
+
+<!--js-->
+<div th:replace="fragments/head :: js"></div>
+</body>
+</html>

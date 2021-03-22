@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/head :: css"></div>
+</head>
+
+<body>
+<div class="page">
+
+    <div th:replace="fragments/body :: header"></div>
+    <!-- header menu -->
+    <div th:replace="fragments/body :: header-menu"></div>
+
+    <!--hidden data-->
+    <input type="hidden" id="ratingStatistic" th:value="${ratingStatistics}"/>
+    <!-- main page-->
+    <div class="page-main">
+        <div class="my-3 my-md-5">
+            <div class="container">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Area Chart</h3>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <canvas id="areaChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Pie Chart</h3>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Bar Chart</h3>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div th:replace="fragments/body :: footer"></div>
+</div>
+
+<script th:src="@{/js/chart/rating.js}"></script>
+
+</body>
+
+</html>

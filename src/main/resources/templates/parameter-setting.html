@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/toast.css}"/>
+    <link rel="stylesheet" th:href="@{/css/adminlte.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed background_content_custom">
+<div class="wrapper background_content_custom">
+
+    <input id="open-modal-save-success" type="hidden" class="btn btn-primary" data-toggle="modal" data-target="#modal-primary"/>
+
+    <div class="modal fade" id="modal-primary">
+        <div class="modal-dialog">
+            <div class="modal-content bg-primary">
+                <div class="modal-body">
+                    <p>Generate success. Go to Output result</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                    <a id="show-generated-output" type="button" class="btn btn-outline-light" th:href="@{/generated-output}">Yes</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper content_background" style="height: 80vh;">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+            </div>
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content h-75">
+            <div class="container-fluid h-100">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main row -->
+                <div class="row h-100">
+                    <div class="col-12 h-100">
+                        <div class="card h-100" style="overflow: scroll;">
+                            <!-- .card-header -->
+                            <!-- /.card-header -->
+
+                            <!-- .card-body -->
+                            <div class="card-body">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a id="itemTab" class="nav-link active" data-toggle="tab"
+                                           href="#i tem">Item</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a id="userTab" class="nav-link" data-toggle="tab" href="#user">User</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a id="ratingTab" class="nav-link" data-toggle="tab"
+                                           href="#rating">Rating</a>
+                                    </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div id="item" class="tab-pane active"><br>
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th class="th.sm">Frequency</th>
+                                                <th class="th.sm">Value</th>
+                                                <th class="th.sm">Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="itemDatas : ${parameterCustom.item}">
+                                                <td>
+                                                    <input type="text" name="frequency" class="form-control" placeholder="frequency" th:value="${itemDatas.frequency}">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="value" class="form-control" placeholder="value" th:value="${itemDatas.value}">
+                                                </td>
+                                                <td>
+                                                    <a class="delete" title="Delete" data-toggle="tooltip">
+                                                        <i class="material-icons">&#xE872;</i></a>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="table-title">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <button type="button" class="btn btn-info add-new"><i
+                                                            class="fa fa-plus"></i> Add New</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="user" class="tab-pane fade"><br>
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th class="th.sm">Frequency</th>
+                                                <th class="th.sm">Value</th>
+                                                <th class="th.sm">Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="userDatas : ${parameterCustom.user}">
+                                                <td>
+                                                    <input type="text" name="frequency" class="form-control" placeholder="frequency" th:value="${userDatas.frequency}">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="value" class="form-control" placeholder="value" th:value="${userDatas.value}">
+                                                </td>
+                                                <td>
+                                                    <a class="delete" title="Delete" data-toggle="tooltip">
+                                                        <i class="material-icons">&#xE872;</i></a>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="table-title">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <button type="button" class="btn btn-info add-new"><i
+                                                            class="fa fa-plus"></i> Add New</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="rating" class="tab-pane fade"><br>
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th class="th-sm">Frequency</th>
+                                                <th class="th-sm">Value</th>
+                                                <th class="th-sm">Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="ratingDatas : ${parameterCustom.rating}">
+                                                <td>
+                                                    <input type="text" name="frequency" class="form-control" placeholder="frequency" th:value="${ratingDatas.frequency}">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="value" class="form-control" placeholder="value" th:value="${ratingDatas.value}">
+                                                </td>
+                                                <td>
+                                                    <a class="delete" title="Delete" data-toggle="tooltip">
+                                                        <i class="material-icons">&#xE872;</i></a>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="table-title">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <button type="button" class="btn btn-info add-new"><i
+                                                            class="fa fa-plus"></i> Add New</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <!-- .card-footer -->
+                            <!-- /.card-footer -->
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button type="button" id="sendData" class="btn btn-info add-new"><i
+                                        class="fa fa-paper-plane"></i> Save Data</button>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- /.content-wrapper -->
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <!--hidden-->
+    <button type="hidden" id="show-saved-success"></button>
+</div>
+
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+<script  th:src="@{https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.4/js/adminlte.min.js}"></script>
+<script  th:src="@{/js/alert.min.js}"></script>
+<script  th:src="@{/js/toast.min.js}"></script>
+<script  th:src="@{/js/parameter-config.js}"></script>
+
+</body>
+
+</html>

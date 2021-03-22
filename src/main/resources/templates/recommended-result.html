@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/head :: css"></div>
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+
+<body>
+<div class="page">
+    <div th:replace="fragments/body :: header"></div>
+    <!-- header menu -->
+    <div th:replace="fragments/body :: header-menu"></div>
+
+    <!-- main page-->
+    <div class="page-main">
+        <div class="my-3 my-md-5">
+            <div class="container">
+                <!--MAE result-->
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>MAE Values</h4>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-wrapper-scroll-y">
+                                <table id="mae-table" class="table table-striped table-bordered table-md">
+                                    <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Parameter</th>
+                                        <th>Real dataset</th>
+                                        <th>MAE</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="maeValue,iter : ${maeValues}">
+                                        <td th:text="${iter.index}"></td>
+                                        <td>
+                                            <ul>
+                                                <li th:text="'Sparsity: ' + ${maeValue.dataGeneratedParam.sparsity} + '%'"></li>
+                                                <li th:text="'Rating scale: ' + ${maeValue.dataGeneratedParam.ratingScale}"></li>
+                                                <li th:text="'Number of users: ' + ${maeValue.dataGeneratedParam.userAmount}"></li>
+                                                <li th:text="'Number of items: ' + ${maeValue.dataGeneratedParam.itemAmount}"></li>
+                                                <li th:text="'Data distribution: ' + ${maeValue.dataGeneratedParam.distribution}"></li>
+                                                <li th:text="'Number of common users: ' + ${maeValue.dataGeneratedParam.commonUser} + '%'"></li>
+                                            </ul>
+                                        </td>
+                                        <td th:text="${maeValue.dataset}"></td>
+                                        <td th:text="${maeValue.value}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--data result-->
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Recommended Results</h4>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-wrapper-scroll-y">
+                                <table id="recommend-table" class="table table-striped table-bordered table-md">
+                                    <thead>
+                                    <tr>
+                                        <th >Item Id</th>
+                                        <th >User Id</th>
+                                        <th >Rating</th>
+                                    </tr>
+                                    </thead>
+                                    <!--<tbody>
+                                    <tr th:each="recommendedData : ${recommendedDataList}">
+                                        <td th:text="${recommendedData.itemId}"></td>
+                                        <td th:text="${recommendedData.userId}"></td>
+                                        <td th:text="${recommendedData.rating}"></td>
+                                    </tr>
+                                    </tbody>-->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div th:replace="fragments/body :: footer"></div>
+</div>
+
+<script>
+    requirejs( ["datatables"], function() {
+        $(function(){
+            /**/
+            $("#mae-table").DataTable({
+                'responsive': true
+            });
+            /**/
+            $("#recommend-table").DataTable({
+                'ajax': {
+                    'contentType': 'application/json',
+                    'url': '/dakgalbi/recommended-result-data',
+                    'type': 'POST',
+                    'data': function(d) {
+                        return JSON.stringify(d);
+                    }
+                },
+                'serverSide': true,
+                'responsive': true,
+                "columnDefs": [
+                    {
+                        "targets": [0],
+                        "data": "itemId"
+                    },
+                    {
+                        "targets": [1],
+                        "data": "userId"
+                    },
+                    {
+                        "targets": [2],
+                        "data": "rating"
+                    },
+                ]
+            });
+        });
+
+    } );
+</script>
+</body>
+</html>

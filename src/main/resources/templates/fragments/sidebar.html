@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<aside class="main-sidebar sidebar-dark-primary background_custom" th:fragment="sidebar">
+    <div class="sidebar">
+        <div class="mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="../static/img/dakgalbi.png" class="elevation-2" alt="DakGalBi" th:src="@{/img/dakgalbi.png}" />
+            </div>
+        </div>
+        <nav>
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="/dakgalbi/generator-page" class="nav-link">
+                        <p>
+                            Data Generator
+                        </p>
+                    </a>
+                    <ul class="nav margin_left">
+                        <li class="nav-item w-100">
+                            <a href="/dakgalbi/parameter-config" class="nav-link">
+                                <p class="margin_left">Parameter config</p>
+                            </a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a href="/dakgalbi/generated-output" class="nav-link">
+                                <p class="margin_left">Output</p>
+                            </a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a href="/dakgalbi/statistic/rating" class="nav-link">
+                                <p class="margin_left">Statistic</p>
+                            </a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a href="/dakgalbi/default-data-page" class="nav-link">
+                                <p class="margin_left">Import file data</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="/dakgalbi/recommender" class="nav-link">
+                        <p>
+                            Recommender System
+                        </p>
+                    </a>
+                    <ul class="nav margin_left">
+                        <li class="nav-item w-100">
+                            <a href="/dakgalbi/recommended-result" class="nav-link">
+                                <p class="margin_left">Recommended Result</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+</html>

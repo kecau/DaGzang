@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="header">
+    <div class="header py-4">
+        <div class="container">
+            <!--//logo-->
+            <div class="d-flex"><a class="header-brand" href="home.html">
+                <span class="avatar" style="background-image: url(IMG/dakgalbi.png)"></span> <strong style="color:#4188c9">DAKGALBI</strong></a>
+                <!-- user information -->
+                <div class="d-flex order-lg-2 ml-auto">
+                    <div class="nav-item d-none d-md-flex"><a href="/dakgalbi/source-code" class="btn btn-sm btn-outline-primary">Source code</a></div>
+                </div>
+                <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse"><span class="header-toggler-icon"></span></a>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block th:fragment="header-menu">
+    <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse" style="-webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);-moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);">
+        <div class="container" >
+            <div class="row align-items-center">
+                <div class="col-lg order-lg-first">
+                    <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                        <li class="nav-item"><a href="/dakgalbi" class="nav-link"><i class="fe fe-home"></i>Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-database"></i>Data Generator</a>
+                            <div class="dropdown-menu dropdown-menu-arrow">
+                                <a href="generator-page" class="dropdown-item ">Execute Generating</a>
+                                <a href="generated-output" class="dropdown-item ">Output</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-users"></i>Recommender System</a>
+                            <div class="dropdown-menu dropdown-menu-arrow">
+                                <a href="recommender" class="dropdown-item ">Domain Selection</a>
+                                <a href="recommended-result" class="dropdown-item ">Result</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block th:fragment="footer">
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-auto ml-lg-auto">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <small class="text-muted d-block mt-1"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                    <a href="http://ke.cau.ac.kr" class="nav-link pr-0 leading-none"  target="_blank" >
+                        <span class="avatar" style="background-image: url(IMG/kecaulogo.png)"></span>
+                        <span class="ml-2 d-none d-lg-block">
+                            <span class="text-default">Knowledge Engineering Laboratory (KEL)</span>
+                            <small class="text-muted d-block mt-1">Copyright © 2020 | DakGalBi</small>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</th:block>
+</html>
