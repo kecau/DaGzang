@@ -39,7 +39,3 @@ docker container run -d -p 3306:3306  \
 
 ## Contact ##
 In case of queries, please email: vuongnguyen@cau.ac.kr
-
-
-
-
