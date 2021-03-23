@@ -38,4 +38,4 @@ docker container run -d -p 3306:3306  \
 * Try online version: http://recsys.cau.ac.kr:8084/dakgalbi
 
 ## Contact ##
-In case of queries, please email: vuongnguyen@cau.ac.kr
+In case of queries, please email: nguyenluongvuong@gmail.com
