@@ -1,5 +1,5 @@
 # Note
-This repository is originated from luongvuongnquyen/DaGzang [https://github.com/luongvuongnguyen/DaGzang].
+This repository is originated from [luongvuongnquyen/DaGzang] (https://github.com/luongvuongnguyen/DaGzang).
 
 # DaGzang
 A Synthetic Data Generator for Cross-domain Recommendation Services
