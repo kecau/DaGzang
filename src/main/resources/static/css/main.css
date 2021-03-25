@@ -1,0 +1,30 @@
+.background_custom {
+    background-color: #5b9bd5;
+}
+
+.background_content_custom {
+    background-color: #deebf7;
+}
+
+.margin_left {
+    margin-left: 20px !important;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    min-height: 500px;
+    height: 700px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.header-brand-img {
+    height: 2rem;
+    line-height: 2rem;
+    vertical-align: bottom;
+    margin-right: .5rem;
+    width: auto;
+}

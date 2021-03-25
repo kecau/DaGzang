@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/head :: css"></div>
+    <link rel="stylesheet" th:href="@{/css/loading.css}"/>
+</head>
+
+<body>
+<div class="page">
+    <div th:replace="fragments/body :: header"></div>
+    <!-- header menu -->
+    <div th:replace="fragments/body :: header-menu"></div>
+
+    <!-- main page-->
+    <div class="page-main">
+        <div class="my-3 my-md-5">
+            <div class="container">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Recommend from existing file</h3>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-wrapper-scroll-y">
+                                <table id="recommend-table" class="table table-striped table-bordered table-md">
+                                    <thead>
+                                    <tr>
+                                        <th>File Name</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="fileName, iter : ${fileNames}">
+                                        <td class="file-name" th:text="${fileName}" th:value="${fileName}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Select Algorithm</h3>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-md-6 mb-5 ml-2">
+                                <div class="row">
+                                    <div>
+                                        <input type="radio" name="selectedAlgorithm" id="selectedAlgorithm" value="ISVD" checked="checked">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <span>SVD implicit stochastic gradient descent</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <input type="radio" name="selectedAlgorithm" id="selectedAlgorithm" value="SVD">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <span>SVD gradient descent</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-right">
+                            <div class="d-flex">
+                                <button id="recommendFileBtn" type="button" class="btn btn-primary ml-auto">Execute</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div th:replace="fragments/body :: footer"></div>
+</div>
+
+<div th:replace="fragments/loading :: loading"></div>
+
+<input id="open-modal-info" type="hidden" class="btn btn-primary" data-toggle="modal" data-target="#modal-primary"/>
+
+<div class="modal fade" id="modal-primary">
+    <div class="modal-dialog">
+        <div class="modal-content bg-info">
+            <div class="modal-body">
+                <p class="text-white">Recommend successfully. Go to Recommended result</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                <a id="show-recommended-result" type="button" class="btn btn-outline-light" th:href="@{/recommended-result}">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script  th:src="@{/js/recommender.js}"></script>
+</body>
+</html>

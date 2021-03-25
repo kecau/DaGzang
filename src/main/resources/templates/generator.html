@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/head :: css"></div>
+
+    <link rel="stylesheet" th:href="@{/css/loading.css}"/>
+</head>
+<body>
+<div class="page">
+    <div th:replace="fragments/body :: header"></div>
+    <!-- header menu -->
+    <div th:replace="fragments/body :: header-menu"></div>
+
+    <!-- main page-->
+    <div class="page-main">
+        <div class="my-3 my-md-5">
+            <div class="container">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Choose Dataset</h3>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <select class="form-control custom-select"
+                                                th:field="${parameterCustom.selectedFileName}">
+                                            <option th:each="fileName : ${parameterCustom.fileNameList}"
+                                                    th:value="${fileName}" th:text="${fileName}"/>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-right">
+                            <div class="d-flex">
+                                <button id="generate" type="button" class="btn btn-primary ml-auto">Generate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div th:replace="fragments/body :: footer"></div>
+</div>
+
+<div th:replace="fragments/loading :: loading"></div>
+
+<input id="open-modal-info" type="hidden" class="btn btn-primary" data-toggle="modal" data-target="#modal-primary"/>
+
+<div class="modal fade" id="modal-primary">
+    <div class="modal-dialog">
+        <div class="modal-content bg-info">
+            <div class="modal-body">
+                <p class="text-white">Generate success. Go to Output result</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                <a id="show-generated-output" type="button" class="btn btn-outline-light" th:href="@{/generated-output}">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--import javascript-->
+<div th:replace="fragments/head :: js"></div>
+
+<script  th:src="@{/js/generator.js}"></script>
+</body>
+
+</html>

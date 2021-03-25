@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <div th:replace="fragments/head :: css"></div>
+
+    <!--<link rel="stylesheet" th:href="@{/css/responsive.bootstrap.min.css}">-->
+    <!--<link rel="stylesheet" th:href="@{/css/overlayscrollbars.min.css}">-->
+   <!-- <link rel="stylesheet" th:href="@{/css/font/all.min.css}">-->
+
+    <!--<link rel="stylesheet" th:href="@{/css/toast.css}"/>-->
+    <!--<link rel="stylesheet" th:href="@{/css/adminlte.min.css}"/>-->
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/css/loading.css}"/>
+</head>
+<body>
+<div class="page">
+    <div th:replace="fragments/body :: header"></div>
+    <!-- header menu -->
+    <div th:replace="fragments/body :: header-menu"></div>
+
+    <!-- main page-->
+    <div class="page-main">
+        <div class="my-3 my-md-5">
+            <div class="container">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Parameter Configure</h3>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Number of users</label>
+                                        <input type="text" class="form-control" name="number-user" placeholder="Input the number of users"
+                                               th:field="${parameterCustom.userAmount}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Number of items</label>
+                                        <input type="text" class="form-control" name="number-item" placeholder="Input the number of users"
+                                               th:field="${parameterCustom.itemAmount}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Data distribution</label>
+                                        <select class="form-control custom-select"
+                                                th:field="${parameterCustom.selectedDistribution}">
+                                            <option th:each="distribution : ${parameterCustom.distributions}"
+                                                    th:value="${distribution}" th:text="${distribution}"/>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Data sparsity (%)</label>
+                                        <input type="text" class="form-control" name="sparsity" placeholder="Input the sparsity of data"
+                                               th:field="${parameterCustom.ratingSparsity}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Scale</label>
+                                        <input type="text" class="form-control" name="scale" placeholder="Input the scale"
+                                               th:field="${parameterCustom.itemPerUserAmount}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="card-footer text-right">
+                            <div class="d-flex">
+                                <button type="submit" class="btn btn-primary ml-auto">Save Parameter</button>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Using Common User From Dataset </h3>
+                            <div class="card-options"><a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Dataset selection</label>
+                                        <select class="form-control custom-select"
+                                                th:field="${parameterCustom.selectedFileName}">
+                                            <option th:each="fileName : ${parameterCustom.fileNameList}"
+                                                    th:value="${fileName}" th:text="${fileName}"/>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Number of common user (%)</label>
+                                        <div class="selectgroup selectgroup-pills">
+                                            <label class="selectgroup-item" th:each="i: ${#numbers.sequence(1, 9)}">
+                                                <input type="radio" name="common-user" th:value="${i*10}" class="selectgroup-input"
+                                                       th:field="${parameterCustom.numberOfCommonUser}">
+                                                <span class="selectgroup-button selectgroup-button-icon" th:text="${i*10}"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-right">
+                            <div class="d-flex">
+                                <button id="saveParameterConfig" type="button" class="btn btn-primary ml-auto">Save Parameter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div th:replace="fragments/body :: footer"></div>
+</div>
+
+<!--js-->
+<div th:replace="fragments/head :: js"></div>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+<script  th:src="@{/js/toast.min.js}"></script>
+<script  th:src="@{/js/parameter-config.js}"></script>
+</body>
+</html>
