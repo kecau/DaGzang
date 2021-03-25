@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-# DaGzang
-=======
+# Note
+This repository is originated from luongvuongnquyen/DaGzang[https://github.com/luongvuongnguyen/DaGzang].
+
 # DaGzang
 A Synthetic Data Generator for Cross-domain Recommendation Services
 
@@ -42,4 +42,3 @@ docker container run -d -p 3306:3306  \
 
 ## Contact ##
 In case of queries, please email: nguyenluongvuong@gmail.com
->>>>>>> upstream/main
